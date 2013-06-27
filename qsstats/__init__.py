@@ -145,10 +145,10 @@ class QuerySetStats(object):
             for i in range(num):
                 value = map(lambda a, b: (a or 0) + (b or 0), value, data.get(dt, zeros[:]))
                 if i == 0:
-                    stat_list.append((dt, value,))
+                    stat_list.append(tuple([dt] + value))
                     idx = len(stat_list) - 1
                 elif i == num - 1:
-                    stat_list[idx] = (dt, value,)
+                    stat_list[idx] = tuple([dt] + value)
                 dt = dt + relativedelta(**{interval : 1})
 
         return stat_list

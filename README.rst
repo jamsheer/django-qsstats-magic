@@ -62,7 +62,7 @@ Aggregating time-series data suitable for graphing
     qss = qsstats.QuerySetStats(qs, 'date_joined')
 
     time_series = qss.time_series(seven_days_ago, today)
-    print 'New users in the last 7 days: %s' % [t[1][0] for t in time_series]
+    print 'New users in the last 7 days: %s' % [t[1] for t in time_series]
 
 This might print something like::
 
@@ -185,10 +185,10 @@ time-series data which may be extremely using in plotting data:
 
     This methods returns a list of tuples.  The first item in each
     tuple is a ``datetime.datetime`` object for the current inverval.  The
-    second item is the list of results of the aggregates operations.  For
+    other items are the results of the aggregates operations.  For
     example::
 
-        [(datetime.datetime(2010, 3, 28, 0, 0), [12]), (datetime.datetime(2010, 3, 29, 0, 0), [0]), ...]
+        [(datetime.datetime(2010, 3, 28, 0, 0), 12), (datetime.datetime(2010, 3, 29, 0, 0), 0), ...]
 
     Formatting of date information is left as an exercise to the user and may
     vary depending on interval used.

@@ -33,7 +33,7 @@ class QuerySetStatsTestCase(TestCase):
         qs = User.objects.all()
         qss = QuerySetStats(qs, 'date_joined')
         time_series = qss.time_series(seven_days_ago, today)
-        self.assertEqual([t[1][0] for t in time_series], [0, 1, 2, 3, 4, 5, 6, 7])
+        self.assertEqual([t[1] for t in time_series], [0, 1, 2, 3, 4, 5, 6, 7])
 
     def test_time_series(self):
         _now = compat.now()
